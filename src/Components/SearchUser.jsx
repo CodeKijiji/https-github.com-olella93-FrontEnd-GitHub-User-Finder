@@ -4,7 +4,7 @@ const SearchUser = () => {
     const [username, setUsername] = useState('');
     
     const handleChange = (e) => setUsername(e.target.value);
-  return (
+  return 
     <div>
       <input 
         type="text" 
