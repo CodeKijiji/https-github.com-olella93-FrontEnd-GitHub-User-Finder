@@ -17,6 +17,8 @@ const SearchUser = () => {
     useEffect(() => {
       if (SearchTerm === '') return});
 
+      const fetchUser = asyn () => {}
+
   return (
     <div>
       <input 
