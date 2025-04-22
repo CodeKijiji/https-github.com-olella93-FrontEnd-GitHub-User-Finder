@@ -25,6 +25,7 @@ const SearchUser = () => {
 
   return (
     <div>
+      <h1>Search for a Github User</h1>
       <input 
         type="text" 
         placeholder="Search for a user" 
