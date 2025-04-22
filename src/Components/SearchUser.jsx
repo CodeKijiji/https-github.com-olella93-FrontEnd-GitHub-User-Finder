@@ -2,10 +2,17 @@ import React from 'react'
 
 const SearchUser = () => {
     const [username, setUsername] = useState('');
-    const [searchTerm, setSearchterm] = useState('');
-    const [userData, setUserData] = useState(null);
+    
+    const handleChange = (e) => setUsername(e.target.value);
   return (
-    <div>SearchUser</div>
+    <div>
+      <input 
+        type="text" 
+        placeholder="Search for a user" 
+        value={username} 
+        onChange={handleChange} 
+      />
+    </div>
   )
 }
 
