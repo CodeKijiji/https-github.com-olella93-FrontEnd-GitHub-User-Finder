@@ -7,10 +7,15 @@ const SearchUser = () => {
   
     const [userData, setUserData] = useState(null);
 
+
+
     const handleSearch = (e) => {
         e.preventDefault();
         setSearchTerm (username.trim());
     };
+
+    useEffect(() => {
+      if (SearchTerm === '') return});
 
   return (
     <div>
