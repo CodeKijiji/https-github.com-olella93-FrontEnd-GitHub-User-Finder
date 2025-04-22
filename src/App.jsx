@@ -36,7 +36,8 @@ function App() {
       setLoading(false);
     }
   };
-
+  
+  
   return (
     <div className="App">
       <h1>GitHub User Finder</h1>
