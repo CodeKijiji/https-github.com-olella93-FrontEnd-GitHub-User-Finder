@@ -33,6 +33,7 @@ const SearchUser = () => {
         onChange={handleChange} 
       />
     </div>
+    <button type="submit">Search</button>
   )
 }
 
