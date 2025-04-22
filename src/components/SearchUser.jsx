@@ -9,7 +9,7 @@ const SearchUser = () => {
         e.preventDefault();
         setSearchTerm (username.trim());
     };
-    
+
   return (
     <div>
       <input 
@@ -19,7 +19,7 @@ const SearchUser = () => {
         onChange={handleChange} 
       />
     </div>
-  )
+  
 }
 
 export default SearchUser
