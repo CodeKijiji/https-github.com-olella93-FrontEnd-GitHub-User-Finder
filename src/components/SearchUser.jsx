@@ -32,8 +32,8 @@ const SearchUser = () => {
         value={username} 
         onChange={handleChange} 
       />
+      <button type="submit">Search</button>
     </div>
-    <button type="submit">Search</button>
   )
 }
 
