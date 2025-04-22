@@ -19,7 +19,9 @@ const SearchUser = () => {
 
       const fetchUser = asyn () => {
         const response = await fetch('https://api.github.com/users/{username}/repos');
-')
+        const data = await response.json();
+        setUserData(data);
+      };
 
   return (
     <div>
