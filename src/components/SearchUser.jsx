@@ -29,6 +29,7 @@ const SearchUser = () => {
   return (
     <div>
       <h1>Search for a Github User</h1>
+      <form onSubmit="[handleSearch">
       <input 
         type="text" 
         placeholder="Search for a user" 
@@ -36,6 +37,7 @@ const SearchUser = () => {
         onChange={handleChange} 
       />
       <button type="submit">Search</button>
+      </form>
     </div>
   )
 }
