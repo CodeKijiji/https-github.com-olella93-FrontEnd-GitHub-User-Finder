@@ -19,7 +19,7 @@ const SearchUser = () => {
         onChange={handleChange} 
       />
     </div>
-  )
+  
 }
 
 export default SearchUser
