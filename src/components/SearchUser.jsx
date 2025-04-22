@@ -4,6 +4,8 @@ const SearchUser = () => {
     const [username, setUsername] = useState('');
     
     const handleChange = (e) => setUsername(e.target.value);
+  
+    const [userData, setUserData] = useState(null);
 
     const handleSearch = (e) => {
         e.preventDefault();
