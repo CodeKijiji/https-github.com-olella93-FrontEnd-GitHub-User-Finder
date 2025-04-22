@@ -17,7 +17,9 @@ const SearchUser = () => {
     useEffect(() => {
       if (SearchTerm === '') return});
 
-      const fetchUser = asyn () => {}
+      const fetchUser = asyn () => {
+        const response = await fetch('https://api.github.com/users/{username}/repos');
+')
 
   return (
     <div>
