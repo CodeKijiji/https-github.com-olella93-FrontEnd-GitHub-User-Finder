@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 
 const SearchUser = () => {
     const [username, setUsername] = useState('');
@@ -11,17 +11,20 @@ const SearchUser = () => {
 
     const handleSearch = (e) => {
         e.preventDefault();
-        setSearchTerm (username.trim());
+        setSearchTerm(username.trim());
     };
 
     useEffect(() => {
-      if (SearchTerm === '') return});
+      if (searchTerm === '') return;
 
-      const fetchUser = asyn () => {
-        const response = await fetch('https://api.github.com/users/{username}/repos');
+      const fetchUser = async () => {
+        const response = await fetch(`https://api.github.com/users/${username}/repos`);
         const data = await response.json();
         setUserData(data);
       };
+
+      fetchUser();
+    }, [searchTerm]);
 
   return (
     <div>
