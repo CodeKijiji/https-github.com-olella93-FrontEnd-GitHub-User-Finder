@@ -7,7 +7,6 @@ import Error from "./components/Error";
 import './index.css';
 import './App.css';
 
-
 function App() {
   const [user, setUser] = useState(null);
   const [repos, setRepos] = useState([]);
