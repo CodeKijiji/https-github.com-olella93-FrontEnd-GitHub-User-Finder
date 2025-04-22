@@ -1,27 +1,28 @@
-import React from 'react'
+import { useState } from "react";
 
-const SearchUser = () => {
-    const [username, setUsername] = useState('');
-    
-    const handleChange = (e) => setUsername(e.target.value);
-  
-    const [userData, setUserData] = useState(null);
+function SearchUser({ onSearch }) {
+  const [username, setUsername] = useState("");
 
-    const handleSearch = (e) => {
-        e.preventDefault();
-        setSearchTerm (username.trim());
-    };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (username.trim() !== "") {
+      onSearch(username);
+    }
+  };
 
   return (
-    <div>
-      <input 
-        type="text" 
-        placeholder="Search for a user" 
-        value={username} 
-        onChange={handleChange} 
-      />
+    <div className="search-bar">
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="Enter GitHub username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+        <button type="submit">Search</button>
+      </form>
     </div>
-  )
+  );
 }
 
-export default SearchUser
+export default SearchUser;
