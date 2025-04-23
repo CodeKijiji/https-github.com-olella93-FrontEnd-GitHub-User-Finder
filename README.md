@@ -4,13 +4,18 @@ GitHub User Finder
 
 A React application that allows users to search for GitHub profiles and view their repositories.
 
-Features
+Features:
 
-Search for any GitHub user by username
-View user profile information (avatar, bio, followers, etc.)
-See a list of the user's public repositories
-Responsive design works on all devices
-Loading states and error handling
+- Search for any GitHub user by username
+
+- View user profile information (avatar, bio, followers, etc.)
+
+- See a list of the user's public repositories
+
+- Responsive design works on all devices
+
+- Loading states and error handling
+
 Live Demo
 
 Check out the deployed version:
