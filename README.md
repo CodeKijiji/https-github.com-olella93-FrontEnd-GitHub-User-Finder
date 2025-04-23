@@ -1,13 +1,73 @@
-# React + Vite
+GitHub User Finder
+GitHub User Finder Screenshot 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React application that allows users to search for GitHub profiles and view their repositories.
 
-Currently, two official plugins are available:
+Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Search for any GitHub user by username
+View user profile information (avatar, bio, followers, etc.)
+See a list of the user's public repositories
+Responsive design works on all devices
+Loading states and error handling
+Live Demo
 
-## Expanding the ESLint configuration
+Check out the deployed version:
+GitHub User Finder Live Demo
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-# GitHub-User-Finder
+Technologies Used
+
+React (with Hooks)
+GitHub API
+CSS Modules
+Vercel (for deployment)
+
+Installation
+To run this project locally:
+1. Clone the repository:
+   git clone https://github.com/your-username/github-user-finder.git
+
+2. Navigate to the project directory:
+ cd github-user-finder
+
+3. Install dependencies:
+   npm install
+
+ 4.Start the development server:
+  npm start
+
+5. Open http://localhost:3000 in your browser.
+
+Project Structure
+src/
+├── components/
+│   ├── SearchUser.jsx    # Search input component
+│   ├── UserCard.jsx      # User profile display
+│   ├── RepoList.jsx      # Repository list display
+│   ├── Loader.jsx        # Loading animation
+│   └── Error.jsx         # Error message display
+├── App.js                # Main application component
+├── index.js              # React entry point
+└── styles/
+    ├── App.css           # Main styles
+    └── index.css         # Base styles
+
+Contributors
+
+1. Richard Olella
+2. Tjay Earl
+3. Andrew Bariu
+4. Wachira Elvis
+
+License
+This project is open source and available under the MIT License.
+
+Future Improvements
+
+- Add pagination for repositories
+- Include more GitHub user statistics
+- Implement dark/light mode toggle
+- Add sorting/filtering options for repositories
+
+Feedback
+If you have any suggestions or find any issues, please open an issue on our GitHub repository.
