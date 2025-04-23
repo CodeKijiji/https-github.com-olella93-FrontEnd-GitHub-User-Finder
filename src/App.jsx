@@ -7,6 +7,7 @@ import Error from "./components/Error.jsx";
 import './index.css';
 import './App.css';
 
+
 function App() {
   const [user, setUser] = useState(null);
   const [repos, setRepos] = useState([]);
@@ -34,8 +35,7 @@ function App() {
     setRepos([]); 
   }
   };
-  
-  
+
   return (
     <div className="App">
       <h1>GitHub User Finder</h1>
