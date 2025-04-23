@@ -1,51 +1,28 @@
-import React, { useState, useEffect } from 'react';
+import { useState } from "react";
 
-const SearchUser = () => {
-    const [username, setUsername] = useState('');
-    
-    const handleChange = (e) => setUsername(e.target.value);
-  
-    const [userData, setUserData] = useState(null);
+function SearchUser({ onSearch }) {
+  const [username, setUsername] = useState("");
 
-
-
-    const handleSearch = (e) => {
-        e.preventDefault();
-        setSearchTerm(username.trim());
-    };
-
-    useEffect(() => {
-      if (searchTerm === '') return;
-
-      const fetchUser = async () => {
-        const response = await fetch(`https://api.github.com/users/${username}/repos`);
-        const data = await response.json();
-        setUserData(data);
-      };
-
-      fetchUser();
-    }, [searchTerm]);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (username.trim() !== "") {
+      onSearch(username);
+    }
+  };
 
   return (
-    <div>
-      <h1>Search for a Github User</h1>
-      <form onSubmit="[handleSearch">
-      <input 
-        type="text" 
-        placeholder="Search for a user" 
-        value={username} 
-        onChange={handleChange} 
-      />
-      <button type="submit">Search</button>
+    <div className="search-bar">
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="Enter GitHub username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+        <button type="submit">Search</button>
       </form>
     </div>
-  )
+  );
 }
 
-{userData && (
-  <div>
-    
-  </div>
-)}
-
-export default SearchUser
+export default SearchUser;

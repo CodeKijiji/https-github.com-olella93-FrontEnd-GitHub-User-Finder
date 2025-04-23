@@ -24,11 +24,16 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to right, #2c003e, #3c0753, #5e1696);
+  color: #fff;
   min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
 
 h1 {
   font-size: 3.2em;
