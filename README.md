@@ -14,7 +14,7 @@ Loading states and error handling
 Live Demo
 
 Check out the deployed version:
-GitHub User Finder Live Demo
+[GitHub User Finder Live Demo](https://git-hub-user-finder-tau.vercel.app)
 
 Technologies Used
 
