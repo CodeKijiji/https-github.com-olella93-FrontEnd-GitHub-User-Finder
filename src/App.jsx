@@ -1,11 +1,12 @@
 import { useState } from "react";
-import SearchUser from "./components/SearchUser.jsx";
-import UserCard from "./components/Usercard.jsx";
-import RepoList from "./components/RepoList.jsx";
-import Loader from "./components/Loader.jsx";
-import Error from "./components/Error.jsx";
+import SearchUser from "./components/SearchUser";
+import UserCard from "./components/UserCard";
+import RepoList from "./components/RepoList";
+import Loader from "./components/Loader";
+import Error from "./components/Error";
 import './index.css';
 import './App.css';
+
 
 function App() {
   const [user, setUser] = useState(null);
@@ -19,23 +20,23 @@ function App() {
     setUser(null);
     setRepos([]);
 
-  try {
-    const userRes = await fetch(`https://api.github.com/users/${username}`);
-    if (!userRes.ok) throw new Error("User not found");
-    const userData = await userRes.json();
-    setUser(userData);
+    try {
+      const userRes = await fetch(`https://api.github.com/users/${username}`);
+      if (!userRes.ok) throw new Error("User not found");
+      const userData = await userRes.json();
+      setUser(userData);
 
-    const repoRes = await fetch(`https://api.github.com/users/${username}/repos`);
-    if (!repoRes.ok) throw new Error("Failed to fetch repositories"); // Add this line
-    const repoData = await repoRes.json();
-    setRepos(repoData);
-  } catch (err) {
-    setError(err.message);
-    setRepos([]); 
-  }
+      const repoRes = await fetch(`https://api.github.com/users/${username}/repos`);
+      const repoData = await repoRes.json();
+      setRepos(repoData);
+    } catch (err) {
+      console.error("Caught error:", err);
+      setError(err instanceof Error ? err.message : "Username not found");
+    } finally {
+      setLoading(false);
+    }
   };
-  
-  
+
   return (
     <div className="App">
       <h1>GitHub User Finder</h1>
