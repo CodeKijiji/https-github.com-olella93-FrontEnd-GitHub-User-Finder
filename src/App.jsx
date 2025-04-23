@@ -1,39 +1,53 @@
-import React, { useState } from 'react';
-import UserCard from './components/UserCard';
+import { useState } from "react";
+import SearchUser from "./components/SearchUser";
+import UserCard from "./components/UserCard";
+import RepoList from "./components/RepoList";
+import Loader from "./components/Loader";
+import Error from "./components/Error";
 import './index.css';
+import './App.css';
 
-const App = () => {
-  const [username, setUsername] = useState('');
-  const [userData, setUserData] = useState(null);
 
-  const handleSearch = async () => {
-    if (!username) return;
+function App() {
+  const [user, setUser] = useState(null);
+  const [repos, setRepos] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleSearch = async (username) => {
+    setLoading(true);
+    setError("");
+    setUser(null);
+    setRepos([]);
 
     try {
-      const response = await fetch(`https://api.github.com/users/${username}`);
-      if (!response.ok) throw new Error('User not found');
-      const data = await response.json();
-      setUserData(data);
-    } catch (error) {
-      console.error(error);
-      setUserData(null);
+      const userRes = await fetch(`https://api.github.com/users/${username}`);
+      if (!userRes.ok) throw new Error("User not found");
+      const userData = await userRes.json();
+      setUser(userData);
+
+      const repoRes = await fetch(`https://api.github.com/users/${username}/repos`);
+      const repoData = await repoRes.json();
+      setRepos(repoData);
+    } catch (err) {
+      console.error("Caught error:", err);
+      setError(err instanceof Error ? err.message : "Username not found");
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div className="container">
+    <div className="App">
       <h1>GitHub User Finder</h1>
-      <input
-        type="text"
-        placeholder="Enter GitHub username"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-      />
-      <button onClick={handleSearch}>Search</button>
+      <SearchUser onSearch={handleSearch} />
 
-      <UserCard user={userData} />
+      {loading && <Loader />}
+      {error && <Error message={error} />}
+      {user && <UserCard user={user} />}
+      {repos.length > 0 && <RepoList repos={repos} />}
     </div>
   );
-};
+}
 
 export default App;

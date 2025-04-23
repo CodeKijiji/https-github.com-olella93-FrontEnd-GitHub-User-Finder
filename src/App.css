@@ -1,42 +1,149 @@
-#root {
-  max-width: 1280px;
+/* App container */
+.App {
+  max-width: 800px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* Headings */
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  color: #e0b3ff;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Error box */
+.error-box {
+  background-color: #60003c;
+  padding: 1rem;
+  margin-top: 1rem;
+  border-radius: 8px;
+  color: #ffb3cc;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+/* Container for the search bar (wrapper) */
+.search-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
 }
 
-.card {
-  padding: 2em;
+/* Input field styling */
+input[type="text"] {
+  padding: 0.8rem;
+  width: 300px; /* Adjust width based on your p */
+  border: none;
+  border-radius: 8px;
+  background-color: #4b1d69;
+  color: white;
+  font-size: 1.1rem;
+  margin-right: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.read-the-docs {
-  color: #888;
+input[type="text"]:focus {
+  outline: none;
+  background-color: #6a2d92;
+  box-shadow: 0 0 15px rgba(137, 67, 255, 0.8);
+}
+
+/* Search button styling */
+button {
+  padding: 0.8rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  background-color: #8a2be2;
+  color: white;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+  background-color: #a34ee4;
+  transform: scale(1.05);
+}
+
+button:active {
+  transform: scale(1);
+}
+
+
+
+/* Glowing effect for user card */
+.user-card {
+  background-color: #2e1c47;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(137, 67, 255, 0.8);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.user-card:hover {
+  box-shadow: 0 0 25px rgba(137, 67, 255, 1);
+}
+
+/* Glowing effect for repo cards */
+.repo-card {
+  background-color: #3a1e5c;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(137, 67, 255, 0.5);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.repo-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 16px rgba(137, 67, 255, 0.9);
+}
+
+/* .repo-card h3 {
+  color: #f3e1ff;
+  margin-bottom: 0.3rem;
+} */
+
+/* .repo-card p {
+  color: #ccc;
+  font-size: 0.95rem;
+} */
+
+.repo-list {
+  padding: 1rem;
+  margin-top: 2rem;
+}
+
+.repo-heading {
+  color: #e0b3ff;
+  font-size: 1.6rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.repo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.repo-link {
+  color: #f3e1ff;
+  font-weight: bold;
+  font-size: 1.1rem;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.repo-link:hover {
+  text-decoration: underline;
+}
+
+.repo-description {
+  color: #ccc;
+  font-size: 0.95rem;
 }
