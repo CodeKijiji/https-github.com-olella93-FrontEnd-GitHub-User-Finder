@@ -26,20 +26,25 @@ Vercel (for deployment)
 Installation
 To run this project locally:
 1. Clone the repository:
+
    git clone https://github.com/olella93/github-user-finder.git
 
-2. Navigate to the project directory:
- cd github-user-finder
+3. Navigate to the project directory:
 
-3. Install dependencies:
+   cd github-user-finder
+
+4. Install dependencies:
+
    npm install
 
  4.Start the development server:
+  
   npm start
 
 5. Open http://localhost:3000 in your browser.
 
 Project Structure
+
 src/
 ├── components/
 │   ├── SearchUser.jsx    # Search input component
