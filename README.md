@@ -1,6 +1,6 @@
 GitHub User Finder
 
-![App Screenshot](https://imgur.com/a/vCCYhxu.jpg) 
+![App Screenshot](https://i.imgur.com/5bxw1aU.png) 
 
 A React application that allows users to search for GitHub profiles and view their repositories.
 
