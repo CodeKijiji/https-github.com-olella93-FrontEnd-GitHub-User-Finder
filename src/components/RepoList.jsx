@@ -28,7 +28,7 @@ function RepoList({ repos }) {
                 {repo.stargazers_count}
               </div>
               <div className="stat-item">
-                🍴 {repo.forks_count}
+                {repo.forks_count}
               </div>
               <div className="stat-item">
                 {new Date(repo.updated_at).toLocaleDateString()}
