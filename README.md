@@ -26,7 +26,7 @@ Vercel (for deployment)
 Installation
 To run this project locally:
 1. Clone the repository:
-   git clone https://github.com/your-username/github-user-finder.git
+   git clone https://github.com/olella93/github-user-finder.git
 
 2. Navigate to the project directory:
  cd github-user-finder
