@@ -1,39 +1,21 @@
 function RepoList({ repos }) {
   return (
     <div className="repo-list">
-      <h3 className="repo-heading">
-        Public Repositories ({repos.length})
-      </h3>
+      <h3 className="repo-heading">Public Repositories</h3>
       <div className="repo-grid">
         {repos.map((repo) => (
           <div key={repo.id} className="repo-card">
-            <div className="repo-header">
-              <a
-                href={repo.html_url}
-                target="_blank"
-                rel="noreferrer"
-                className="repo-link"
-              >
-                {repo.name}
-              </a>
-              <span className="repo-language">
-                {repo.language || "N/A"}
-              </span>
-            </div>
+            <a
+              href={repo.html_url}
+              target="_blank"
+              rel="noreferrer"
+              className="repo-link"
+            >
+              {repo.name}
+            </a>
             <p className="repo-description">
-              {repo.description || "No description provided"}
+              {repo.description || "No description"}
             </p>
-            <div className="repo-stats">
-              <div className="stat-item">
-                {repo.stargazers_count}
-              </div>
-              <div className="stat-item">
-                {repo.forks_count}
-              </div>
-              <div className="stat-item">
-                {new Date(repo.updated_at).toLocaleDateString()}
-              </div>
-            </div>
           </div>
         ))}
       </div>
