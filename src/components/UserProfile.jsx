@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import UseCard from './UseCard';
+import UserCard from './UserCard';
 import RepoList from './RepoList';
 import Loader from './Loader';
 import Error from './Error';
