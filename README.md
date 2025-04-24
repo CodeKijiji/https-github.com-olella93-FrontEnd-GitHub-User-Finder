@@ -16,20 +16,24 @@ Features:
 
 - Loading states and error handling
 
-Live Demo
+Live Demo:
 
 Check out the deployed version:
 [GitHub User Finder Live Demo](https://git-hub-user-finder-4ewy.vercel.app/)
 
-Technologies Used
+Technologies Used:
 
-React (with Hooks)
-GitHub API
-CSS Modules
-Vercel (for deployment)
+- React (with Hooks)
 
-Installation
+- GitHub API
+
+- CSS Modules
+
+- Vercel (for deployment)
+
+Installation:
 To run this project locally:
+
 1. Clone the repository:
 
    git clone https://github.com/olella93/github-user-finder.git
