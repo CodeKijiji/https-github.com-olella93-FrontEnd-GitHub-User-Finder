@@ -33,7 +33,7 @@ h1 {
 /* Input field styling */
 input[type="text"] {
   padding: 0.8rem;
-  width: 300px; /* Adjust width based on your p */
+  width: 300px;
   border: none;
   border-radius: 8px;
   background-color: #4b1d69;
@@ -100,15 +100,6 @@ button:active {
   box-shadow: 0 0 16px rgba(137, 67, 255, 0.9);
 }
 
-/* .repo-card h3 {
-  color: #f3e1ff;
-  margin-bottom: 0.3rem;
-} */
-
-/* .repo-card p {
-  color: #ccc;
-  font-size: 0.95rem;
-} */
 
 .repo-list {
   padding: 1rem;
@@ -146,4 +137,34 @@ button:active {
 .repo-description {
   color: #ccc;
   font-size: 0.95rem;
+}
+
+/* Button Styles */
+.user-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+  justify-content: center;
+}
+
+.profile-button {
+  padding: 8px 16px;
+  background: #8a2be2;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: all 0.2s;
+  border: 1px solid transparent;
+
+}
+
+.profile-button:hover {
+  box-shadow: 0 0 25px rgba(137, 67, 255, 1);
+  transform: translateY(-1px);
+}
+
+
+.profile-button[data-active] {
+  background: #8a2be2;
 }
