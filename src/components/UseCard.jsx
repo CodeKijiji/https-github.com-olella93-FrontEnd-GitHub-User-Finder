@@ -38,4 +38,4 @@ function UseCard({ user, expandedView = false }) {
   );
 }
 
-export default UserCard;
+export default UseCard;
