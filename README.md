@@ -19,7 +19,7 @@ Features:
 Live Demo
 
 Check out the deployed version:
-[GitHub User Finder Live Demo](https://git-hub-user-finder-tau.vercel.app)
+[GitHub User Finder Live Demo](https://git-hub-user-finder-4ewy.vercel.app/)
 
 Technologies Used
 
