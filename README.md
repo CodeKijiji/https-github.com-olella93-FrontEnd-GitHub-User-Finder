@@ -1,6 +1,6 @@
 GitHub User Finder
 
-![App Screenshot](https://i.imgur.com/5bxw1aU.png) 
+![App Screenshot](https://i.imgur.com/X0rMp0U.png) 
 
 A React application that allows users to search for GitHub profiles and view their repositories.
 
@@ -56,7 +56,8 @@ src/
 │   ├── UserCard.jsx      # User profile display
 │   ├── RepoList.jsx      # Repository list display
 │   ├── Loader.jsx        # Loading animation
-│   └── Error.jsx         # Error message display
+│   ├── UserProfile.jsx
+     └── Error.jsx        # Error message display
 ├── App.js                # Main application component
 ├── index.js              # React entry point
 └── styles/
