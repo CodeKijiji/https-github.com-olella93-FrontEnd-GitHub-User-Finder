@@ -1,6 +1,6 @@
 import {Link} from "react-router-dom";
 
-function UserCard({ user, expandedView = false }) {
+function UseCard({ user, expandedView = false }) {
   return (
     <div className={`user-card ${expandedView ? 'expanded' : ''}`}>
       <img src={user.avatar_url} alt={user.login} width={expandedView ? 150 : 100} />
