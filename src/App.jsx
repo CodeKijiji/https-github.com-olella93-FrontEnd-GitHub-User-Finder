@@ -2,7 +2,9 @@ import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import SearchUser from "./components/SearchUser";
 import UserProfile from "./components/UserProfile";
-import UserCard from "./components/UserCard";
+
+import UserCard from "./components/UseCard";
+
 import RepoList from "./components/RepoList";
 import Loader from "./components/Loader";
 import Error from "./components/Error";

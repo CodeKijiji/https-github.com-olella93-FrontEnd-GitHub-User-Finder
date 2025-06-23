@@ -1,6 +1,6 @@
 GitHub User Finder
 
-![App Screenshot](https://i.imgur.com/5bxw1aU.png) 
+![App Screenshot](https://i.imgur.com/X0rMp0U.png) 
 
 A React application that allows users to search for GitHub profiles and view their repositories.
 
@@ -16,20 +16,24 @@ Features:
 
 - Loading states and error handling
 
-Live Demo
+Live Demo:
 
 Check out the deployed version:
-[GitHub User Finder Live Demo](https://git-hub-user-finder-tau.vercel.app)
+[GitHub User Finder Live Demo](https://git-hub-user-finder-4ewy.vercel.app/)
 
-Technologies Used
+Technologies Used:
 
-React (with Hooks)
-GitHub API
-CSS Modules
-Vercel (for deployment)
+- React (with Hooks)
 
-Installation
+- GitHub API
+
+- CSS Modules
+
+- Vercel (for deployment)
+
+Installation:
 To run this project locally:
+
 1. Clone the repository:
 
    git clone https://github.com/olella93/github-user-finder.git
@@ -56,7 +60,8 @@ src/
 │   ├── UserCard.jsx      # User profile display
 │   ├── RepoList.jsx      # Repository list display
 │   ├── Loader.jsx        # Loading animation
-│   └── Error.jsx         # Error message display
+│   ├── UserProfile.jsx
+     └── Error.jsx        # Error message display
 ├── App.js                # Main application component
 ├── index.js              # React entry point
 └── styles/
