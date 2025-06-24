@@ -168,3 +168,28 @@ button:active {
 .profile-button[data-active] {
   background: #8a2be2;
 }
+
+/* Loader Styles */
+.loader-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid gray;
+  border-left-color: purple;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 10px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
