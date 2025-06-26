@@ -1,16 +1,36 @@
-import { useState } from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from "react-router-dom";
 import SearchUser from "./components/SearchUser";
 import UserProfile from "./components/UserProfile";
+import RegisterForm from "./components/RegisterForm";
+import LoginForm from "./components/LoginForm";
+
 import UserCard from "./components/UseCard";
+
 import RepoList from "./components/RepoList";
 import Loader from "./components/Loader";
 import Error from "./components/Error";
-import RegisterForm from "./components/RegisterForm";
-import LoginForm from "./components/LoginForm";
 import './App.css';
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    // Check token existence in localStorage
+    const token = localStorage.getItem("access_token");
+    if (token) setIsLoggedIn(true);
+  }, []);
+
+  const handleLoginSuccess = (token) => {
+    localStorage.setItem("access_token", token);
+    setIsLoggedIn(true);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("access_token");
+    setIsLoggedIn(false);
+  };
+
   return (
     <Router>
       <div className="App">
@@ -19,21 +39,42 @@ function App() {
             <h1>GitHub User Finder</h1>
           </Link>
           <div className="auth-links">
-            <Link to="/register" className="nav-link">Register</Link>
-            <Link to="/login" className="nav-link">Login</Link>
+            {isLoggedIn ? (
+              <button onClick={handleLogout} className="nav-link">Logout</button>
+            ) : (
+              <>
+                <Link to="/register" className="nav-link">Register</Link>
+                <Link to="/login" className="nav-link">Login</Link>
+              </>
+            )}
           </div>
         </nav>
+
         <Routes>
-          {/* Home/Search Page */}
-          <Route path="/" element={<SearchPage />} />
-          {/* Profile Page */}
-          <Route path="/users/:username" element={<UserProfile />} />
-          {/* Auth routes */}
-          <Route path="/register" element={<RegisterForm />} />
-          <Route path="/login" element={<LoginForm />} />
+          {!isLoggedIn ? (
+            <>
+              <Route path="/register" element={<RegisterForm onSuccess={handleLoginSuccess} />} />
+              <Route path="/login" element={<LoginForm onSuccess={handleLoginSuccess} />} />
+              <Route path="*" element={<AuthPrompt />} />
+            </>
+          ) : (
+            <>
+              <Route path="/" element={<SearchPage />} />
+              <Route path="/users/:username" element={<UserProfile />} />
+              <Route path="*" element={<SearchPage />} />
+            </>
+          )}
         </Routes>
       </div>
     </Router>
+  );
+}
+
+function AuthPrompt() {
+  return (
+    <div style={{ textAlign: "center", marginTop: "50px" }}>
+      <h2>Please register or login to continue.</h2>
+    </div>
   );
 }
 
