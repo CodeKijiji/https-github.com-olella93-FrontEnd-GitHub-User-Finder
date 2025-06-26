@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import SearchUser from "./components/SearchUser";
 import UserProfile from "./components/UserProfile";
 import RegisterForm from "./components/RegisterForm";
 import LoginForm from "./components/LoginForm";
-
+import Bookmarks from "./components/Bookmarks";
 import UserCard from "./components/UseCard";
-
 import RepoList from "./components/RepoList";
 import Loader from "./components/Loader";
 import Error from "./components/Error";
@@ -16,7 +15,6 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
-    // Check token existence in localStorage
     const token = localStorage.getItem("access_token");
     if (token) setIsLoggedIn(true);
   }, []);
@@ -38,9 +36,16 @@ function App() {
           <Link to="/" className="home-link">
             <h1>GitHub User Finder</h1>
           </Link>
+          {isLoggedIn && (
+            <Link to="/bookmarks" className="nav-link">
+              My Bookmarks
+            </Link>
+          )}
           <div className="auth-links">
             {isLoggedIn ? (
-              <button onClick={handleLogout} className="nav-link">Logout</button>
+              <button onClick={handleLogout} className="nav-link">
+                Logout
+              </button>
             ) : (
               <>
                 <Link to="/register" className="nav-link">Register</Link>
@@ -49,18 +54,19 @@ function App() {
             )}
           </div>
         </nav>
-
         <Routes>
           {!isLoggedIn ? (
             <>
               <Route path="/register" element={<RegisterForm onSuccess={handleLoginSuccess} />} />
               <Route path="/login" element={<LoginForm onSuccess={handleLoginSuccess} />} />
+              <Route path="/bookmarks" element={<Bookmarks />} />
               <Route path="*" element={<AuthPrompt />} />
             </>
           ) : (
             <>
               <Route path="/" element={<SearchPage />} />
               <Route path="/users/:username" element={<UserProfile />} />
+              <Route path="/bookmarks" element={<Bookmarks />} />
               <Route path="*" element={<SearchPage />} />
             </>
           )}
@@ -78,7 +84,6 @@ function AuthPrompt() {
   );
 }
 
-// Extracted Search Page Component
 function SearchPage() {
   const [user, setUser] = useState(null);
   const [repos, setRepos] = useState([]);
