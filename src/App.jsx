@@ -2,12 +2,12 @@ import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import SearchUser from "./components/SearchUser";
 import UserProfile from "./components/UserProfile";
-
 import UserCard from "./components/UseCard";
-
 import RepoList from "./components/RepoList";
 import Loader from "./components/Loader";
 import Error from "./components/Error";
+import RegisterForm from "./components/RegisterForm";
+import LoginForm from "./components/LoginForm";
 import './App.css';
 
 function App() {
@@ -18,14 +18,21 @@ function App() {
           <Link to="/" className="home-link">
             <h1>GitHub User Finder</h1>
           </Link>
+          {/* Links for navigation */}
+          <Link to="/register">Register</Link>
+          <Link to="/login">Login</Link>
         </nav>
 
         <Routes>
           {/* Home/Search Page */}
           <Route path="/" element={<SearchPage />} />
-          
+
           {/* Profile Page */}
           <Route path="/users/:username" element={<UserProfile />} />
+
+          {/* Auth routes */}
+          <Route path="/register" element={<RegisterForm />} />
+          <Route path="/login" element={<LoginForm />} />
         </Routes>
       </div>
     </Router>
@@ -61,7 +68,6 @@ function SearchPage() {
     }
   };
 
-
   return (
     <>
       <SearchUser onSearch={handleSearch} />
@@ -71,8 +77,6 @@ function SearchPage() {
         <div className="search-results">
           <UserCard user={user} />
           {repos.length > 0 && <RepoList repos={repos} />}
-          
-          
         </div>
       )}
     </>
