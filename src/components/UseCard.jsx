@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import API from "../api";
+import CommentsSection from "./CommentsSection";
 
 function UserCard({ user, expandedView = false }) {
   const [bookmarked, setBookmarked] = useState(false);
@@ -81,14 +82,17 @@ function UserCard({ user, expandedView = false }) {
             View Full Profile
           </Link>
         )}
-        <button
-          onClick={handleToggleBookmark}
-          className="profile-button"
-        >
+        <button onClick={handleToggleBookmark} className="profile-button">
           {bookmarked ? "Remove Bookmark" : "Bookmark"}
         </button>
       </div>
       {error && <p className="error-text">{error}</p>}
+
+      {bookmarked && bookmarkId && (
+        <div className="comments-wrapper" style={{ marginTop: "20px" }}>
+          <CommentsSection itemId={bookmarkId} />
+        </div>
+      )}
     </div>
   );
 }
