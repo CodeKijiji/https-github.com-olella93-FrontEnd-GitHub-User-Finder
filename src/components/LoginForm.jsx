@@ -1,32 +1,54 @@
-import React, { useState } from 'react';
-import API from '../api';
+import { useState } from "react";
+import API from "../api";
 
-function LoginForm({ onLogin }) {
-  const [form, setForm] = useState({ username: '', password: '' });
-  const [error, setError] = useState(null);
+function LoginForm({ onSuccess }) {
+  const [formData, setFormData] = useState({ username: "", password: "" });
+  const [error, setError] = useState("");
 
-  const handleChange = e => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async e => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setError("");
+
     try {
-      const res = await API.post('/login', form);
-      localStorage.setItem('access_token', res.data.access_token);
-      onLogin?.(); 
+      const res = await API.post("/login", formData);
+      localStorage.setItem("access_token", res.data.access_token);
+      onSuccess(res.data.access_token);
     } catch (err) {
-      setError(err.response?.data?.error || 'Login failed');
+      console.error(err);
+      setError(err.response?.data?.error || "Login failed");
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input name="username" placeholder="Username" onChange={handleChange} required />
-      <input name="password" type="password" placeholder="Password" onChange={handleChange} required />
-      <button type="submit">Login</button>
-      {error && <p>{error}</p>}
-    </form>
+    <div className="auth-form-container">
+      <h2>Login</h2>
+      <form onSubmit={handleSubmit}>
+        <input 
+          type="text" 
+          name="username" 
+          placeholder="Username"
+          value={formData.username}
+          onChange={handleChange}
+          required
+        />
+
+        <input 
+          type="password" 
+          name="password" 
+          placeholder="Password"
+          value={formData.password}
+          onChange={handleChange}
+          required
+        />
+
+        <button type="submit">Login</button>
+      </form>
+      {error && <p className="error-msg">{error}</p>}
+    </div>
   );
 }
 
