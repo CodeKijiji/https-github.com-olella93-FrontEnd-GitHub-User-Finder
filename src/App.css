@@ -193,3 +193,21 @@ button:active {
     transform: rotate(360deg);
   }
 }
+
+.auth-links {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* spacing between Register and Login */
+}
+
+.nav-link {
+  color: #ccc;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+  color: #fff;
+}

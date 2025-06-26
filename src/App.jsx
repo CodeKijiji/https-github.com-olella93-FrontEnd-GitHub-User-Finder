@@ -18,18 +18,16 @@ function App() {
           <Link to="/" className="home-link">
             <h1>GitHub User Finder</h1>
           </Link>
-          {/* Links for navigation */}
-          <Link to="/register">Register</Link>
-          <Link to="/login">Login</Link>
+          <div className="auth-links">
+            <Link to="/register" className="nav-link">Register</Link>
+            <Link to="/login" className="nav-link">Login</Link>
+          </div>
         </nav>
-
         <Routes>
           {/* Home/Search Page */}
           <Route path="/" element={<SearchPage />} />
-
           {/* Profile Page */}
           <Route path="/users/:username" element={<UserProfile />} />
-
           {/* Auth routes */}
           <Route path="/register" element={<RegisterForm />} />
           <Route path="/login" element={<LoginForm />} />
