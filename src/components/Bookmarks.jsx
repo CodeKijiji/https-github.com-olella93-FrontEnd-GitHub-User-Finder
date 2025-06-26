@@ -5,22 +5,29 @@ function Bookmarks() {
   const [bookmarks, setBookmarks] = useState([]);
   const [error, setError] = useState("");
 
-  useEffect(() => {
-    const fetchBookmarks = async () => {
-      try {
-        const token = localStorage.getItem("access_token");
-        const res = await API.get("/items/", {
-          headers: { Authorization: `Bearer ${token}` }
-        });
-        setBookmarks(res.data);
-      } catch (err) {
-        setError("Failed to load bookmarks");
-        console.error(err);
-      }
-    };
+  const fetchBookmarks = async () => {
+    try {
+      const res = await API.get("/items/");
+      setBookmarks(res.data);
+    } catch (err) {
+      setError("Failed to load bookmarks");
+      console.error(err);
+    }
+  };
 
+  useEffect(() => {
     fetchBookmarks();
   }, []);
+
+  const handleDeleteBookmark = async (id) => {
+    try {
+      await API.delete(`/items/${id}`);
+      setBookmarks((prev) => prev.filter((item) => item.id !== id));
+    } catch (err) {
+      console.error(err);
+      setError("Failed to delete bookmark");
+    }
+  };
 
   return (
     <div className="bookmarks-page">
@@ -31,8 +38,22 @@ function Bookmarks() {
       ) : (
         <ul>
           {bookmarks.map((item) => (
-            <li key={item.id}>
+            <li key={item.id} style={{ marginBottom: "10px" }}>
               <strong>{item.github_username}</strong> - {item.note}
+              <button
+                onClick={() => handleDeleteBookmark(item.id)}
+                style={{
+                  marginLeft: "10px",
+                  backgroundColor: "#ff4d4d",
+                  color: "white",
+                  border: "none",
+                  borderRadius: "4px",
+                  padding: "4px 8px",
+                  cursor: "pointer",
+                }}
+              >
+                Delete
+              </button>
             </li>
           ))}
         </ul>
