@@ -1,22 +1,50 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import API from "../api";
 
 function UserCard({ user, expandedView = false }) {
   const [bookmarked, setBookmarked] = useState(false);
+  const [bookmarkId, setBookmarkId] = useState(null);
   const [error, setError] = useState("");
 
-  const handleBookmark = async () => {
+  useEffect(() => {
+    const checkIfBookmarked = async () => {
+      try {
+        const res = await API.get("/items/");
+        const existingBookmark = res.data.find(
+          (item) => item.github_username === user.login
+        );
+        if (existingBookmark) {
+          setBookmarked(true);
+          setBookmarkId(existingBookmark.id);
+        }
+      } catch (err) {
+        console.error(err);
+        setError("Failed to check bookmark status");
+      }
+    };
+
+    checkIfBookmarked();
+  }, [user.login]);
+
+  const handleToggleBookmark = async () => {
     try {
-      await API.post("/items/", {
-        github_username: user.login,
-        note: "Saved via bookmark",
-        category: "GitHub Users"
-      });
-      setBookmarked(true);
+      if (!bookmarked) {
+        const res = await API.post("/items/", {
+          github_username: user.login,
+          note: "Saved via bookmark",
+          category: "GitHub Users",
+        });
+        setBookmarked(true);
+        setBookmarkId(res.data.id);
+      } else {
+        await API.delete(`/items/${bookmarkId}`);
+        setBookmarked(false);
+        setBookmarkId(null);
+      }
     } catch (err) {
       console.error(err);
-      setError("Failed to bookmark user");
+      setError("Failed to toggle bookmark");
     }
   };
 
@@ -54,11 +82,10 @@ function UserCard({ user, expandedView = false }) {
           </Link>
         )}
         <button
-          onClick={handleBookmark}
-          disabled={bookmarked}
+          onClick={handleToggleBookmark}
           className="profile-button"
         >
-          {bookmarked ? "Bookmarked" : "Bookmark"}
+          {bookmarked ? "Remove Bookmark" : "Bookmark"}
         </button>
       </div>
       {error && <p className="error-text">{error}</p>}
