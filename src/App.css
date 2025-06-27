@@ -1,131 +1,128 @@
-/* App container */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: black;
+  color: white;
+  min-height: 100vh;
+}
+
 .App {
   max-width: 800px;
   margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
-/* Headings */
-h1 {
-  font-size: 2.5rem;
-  margin-bottom: 1.5rem;
-  color: #e0b3ff;
-}
-
-/* Error box */
-.error-box {
-  background-color: #60003c;
   padding: 1rem;
-  margin-top: 1rem;
-  border-radius: 8px;
-  color: #ffb3cc;
 }
 
-/* Container for the search bar (wrapper) */
-.search-bar {
+nav {
   display: flex;
-  justify-content: center;
   align-items: center;
-  margin-bottom: 2rem;
-}
-
-/* Input field styling */
-input[type="text"] {
-  padding: 0.8rem;
-  width: 300px;
-  border: none;
-  border-radius: 8px;
-  background-color: #4b1d69;
-  color: white;
-  font-size: 1.1rem;
-  margin-right: 1rem;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-input[type="text"]:focus {
-  outline: none;
-  background-color: #6a2d92;
-  box-shadow: 0 0 15px rgba(137, 67, 255, 0.8);
-}
-
-/* Search button styling */
-button {
-  padding: 0.8rem 1.2rem;
-  border: none;
-  border-radius: 8px;
-  background-color: #8a2be2;
-  color: white;
-  cursor: pointer;
-  font-size: 1.1rem;
-  transition: background 0.3s ease, transform 0.3s ease;
-}
-
-button:hover {
-  background-color: #a34ee4;
-  transform: scale(1.05);
-}
-
-button:active {
-  transform: scale(1);
-}
-
-
-
-/* Glowing effect for user card */
-.user-card {
-  background-color: #2e1c47;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 15px rgba(137, 67, 255, 0.8);
-  transition: box-shadow 0.3s ease-in-out;
-}
-
-.user-card:hover {
-  box-shadow: 0 0 25px rgba(137, 67, 255, 1);
-}
-
-/* Glowing effect for repo cards */
-.repo-card {
-  background-color: #3a1e5c;
-  padding: 1rem;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(137, 67, 255, 0.5);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.repo-card:hover {
-  transform: scale(1.03);
-  box-shadow: 0 0 16px rgba(137, 67, 255, 0.9);
-}
-
-
-.repo-list {
-  padding: 1rem;
-  margin-top: 2rem;
-}
-
-.repo-heading {
-  color: #e0b3ff;
-  font-size: 1.6rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid royalblue;
   margin-bottom: 1.5rem;
-  text-align: center;
+}
+
+.home-link {
+  text-decoration: none;
+  color: white;
+  flex-grow: 1;
+}
+
+.home-link h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.nav-link {
+  color: silver;
+  text-decoration: none;
+  margin-left: 1rem;
+  padding: 0.5rem;
+  border: 1px solid royalblue;
+  border-radius: 4px;
+}
+
+.nav-link:hover {
+  background-color: darkblue;
+  color: white;
+}
+
+button.nav-link {
+  background: none;
+  cursor: pointer;
+  font: inherit;
+}
+
+.search-bar {
+  margin-bottom: 1.5rem;
+}
+
+.search-bar form {
+  display: flex;
+}
+
+.search-bar input {
+  flex-grow: 1;
+  padding: 0.7rem;
+  border: 1px solid royalblue;
+  border-radius: 4px;
+  background-color: darkblue;
+  color: white;
+  font-size: 1rem;
+}
+
+.search-bar button {
+  margin-left: 0.5rem;
+  padding: 0 1.2rem;
+  background-color: royalblue;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.search-bar button:hover {
+  background-color: dodgerblue;
+}
+
+.user-card {
+  background-color: darkblue;
+  padding: 1.2rem;
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
+  border: 1px solid royalblue;
+}
+
+.repo-card {
+  background-color: darkblue;
+  padding: 1rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  border: 1px solid royalblue;
 }
 
 .repo-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-  max-width: 1000px;
-  margin: 0 auto;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+h1, h2, h3 {
+  color: white;
+  margin-top: 0;
+}
+
+h2 {
+  font-size: 1.3rem;
+}
+
+p {
+  color: silver;
 }
 
 .repo-link {
-  color: #f3e1ff;
-  font-weight: bold;
-  font-size: 1.1rem;
+  color: deepskyblue;
   text-decoration: none;
+  font-weight: bold;
   display: block;
   margin-bottom: 0.5rem;
 }
@@ -134,42 +131,55 @@ button:active {
   text-decoration: underline;
 }
 
-.repo-description {
-  color: #ccc;
-  font-size: 0.95rem;
-}
-
-/* Button Styles */
-.user-actions {
-  display: flex;
-  gap: 10px;
-  margin-top: 15px;
-  justify-content: center;
-}
-
-.profile-button {
-  padding: 8px 16px;
-  background: #8a2be2;
-  color: white;
-  text-decoration: none;
+.auth-form-container {
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background-color: darkblue;
   border-radius: 6px;
-  font-size: 14px;
-  transition: all 0.2s;
-  border: 1px solid transparent;
-
+  border: 1px solid royalblue;
 }
 
-.profile-button:hover {
-  box-shadow: 0 0 25px rgba(137, 67, 255, 1);
-  transform: translateY(-1px);
+.auth-form-container h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: white;
 }
 
-
-.profile-button[data-active] {
-  background: #8a2be2;
+.auth-form input {
+  width: 100%;
+  padding: 0.7rem;
+  margin-bottom: 1rem;
+  border: 1px solid royalblue;
+  border-radius: 4px;
+  background-color: black;
+  color: white;
 }
 
-/* Loader Styles */
+.auth-form button {
+  width: 100%;
+  padding: 0.7rem;
+  background-color: royalblue;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.auth-form button:hover {
+  background-color: dodgerblue;
+}
+
+.error-box {
+  background-color: darkred;
+  padding: 1rem;
+  margin-top: 1rem;
+  border-radius: 6px;
+  color: pink;
+  border: 1px solid crimson;
+}
+
 .loader-container {
   display: flex;
   flex-direction: column;
@@ -179,92 +189,93 @@ button:active {
 }
 
 .spinner {
-  width: 50px;
-  height: 50px;
-  border: 5px solid transparent;
-  border-left-color: purple;
+  width: 40px;
+  height: 40px;
+  border: 4px solid royalblue;
+  border-top: 4px solid deepskyblue;
   border-radius: 50%;
   animation: spin 1s linear infinite;
   margin-bottom: 10px;
 }
 
 @keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
+  to { transform: rotate(360deg); }
 }
 
-.auth-links {
-  margin-top: 10px;
-  display: flex;
-  justify-content: center;
-  gap: 20px; /* spacing between Register and Login */
-}
-
-.nav-link {
-  color: #ccc;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.nav-link:hover {
-  text-decoration: underline;
-  color: #fff;
-}
-
-.auth-form-container {
-  background: rgba(255, 255, 255, 0.05);
-  padding: 2rem;
-  border-radius: 10px;
-  max-width: 400px;
-  margin: 2rem auto;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+.auth-prompt {
   text-align: center;
+  padding: 2rem;
+  background-color: darkblue;
+  border-radius: 6px;
+  max-width: 500px;
+  margin: 2rem auto;
+  border: 1px solid royalblue;
 }
 
-.auth-form-container h2 {
-  color: #fff;
-  margin-bottom: 1rem;
-}
-
-.auth-form-container form {
+.auth-actions {
   display: flex;
-  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1.5rem;
 }
 
-.auth-form-container input {
-  padding: 0.75rem;
-  margin-bottom: 1rem;
-  border: none;
-  border-radius: 5px;
-  background: rgba(255,255,255,0.1);
-  color: #fff;
-}
-
-.auth-form-container input::placeholder {
-  color: #ccc;
-}
-
-.auth-form-container button {
-  background-color: #a259ff;
+.auth-button {
+  padding: 0.7rem 1.3rem;
+  background-color: royalblue;
   color: white;
   border: none;
-  padding: 0.75rem;
-  border-radius: 5px;
+  border-radius: 4px;
   cursor: pointer;
-  transition: background 0.3s ease;
 }
 
-.auth-form-container button:hover {
-  background-color: #7a3ddb;
+.auth-button.secondary {
+  background-color: black;
 }
 
-.auth-form-container .error-msg {
-  color: #ff6b6b;
+.auth-button:hover {
+  background-color: dodgerblue;
+}
+
+.auth-link {
+  text-align: center;
+  margin-top: 1.5rem;
+  color: silver;
+}
+
+.auth-link span {
+  color: deepskyblue;
+  cursor: pointer;
+  margin-left: 0.3rem;
+  font-weight: bold;
+}
+
+.auth-link span:hover {
+  text-decoration: underline;
+}
+
+.error-msg {
+  color: tomato;
   margin-top: 0.5rem;
+  text-align: center;
+  font-weight: bold;
 }
 
-.auth-form-container .success-msg {
-  color: #4caf50;
-  margin-top: 0.5rem;
+.user-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.profile-button {
+  padding: 0.5rem 1rem;
+  background-color: royalblue;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  border: 1px solid royalblue;
+}
+
+.profile-button:hover {
+  background-color: dodgerblue;
 }

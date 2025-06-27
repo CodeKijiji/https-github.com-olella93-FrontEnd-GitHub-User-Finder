@@ -1,64 +1,101 @@
-import React, { useState } from 'react';
-import API from '../api';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
+function RegisterForm({ onSuccess }) {
+  const [formData, setFormData] = useState({ 
+    username: "", 
+    email: "", 
+    password: "",
+    confirmPassword: "" 
+  });
+  const [error, setError] = useState("");
 
-function RegisterForm({ onLogin }) {
-  const [form, setForm] = useState({ username: '', email: '', password: '' });
-  const [error, setError] = useState(null);
-  const [success, setSuccess] = useState(null);
+  const navigate = useNavigate();
 
-  const handleChange = e => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setError(null);
-    setSuccess(null);
+    setError("");
 
-    try {
-      const res = await API.post('/register', form);
-      localStorage.setItem('access_token', res.data.access_token);
-      setSuccess("Registration successful!");
-      onLogin?.(); // optional callback after successful registration
-    } catch (err) {
-      console.error(err);
-      setError(err.response?.data?.error || 'Registration failed');
+    if (!formData.username.trim()) {
+      setError("Username is required");
+      return;
     }
+    
+    if (!formData.email.trim()) {
+      setError("Email is required");
+      return;
+    }
+    
+    if (!formData.password) {
+      setError("Password is required");
+      return;
+    }
+    
+    if (formData.password !== formData.confirmPassword) {
+      setError("Passwords do not match");
+      return;
+    }
+
+    onSuccess();
+    navigate("/");
   };
 
   return (
     <div className="auth-form-container">
-      <h2>Register</h2>
-      <form onSubmit={handleSubmit}>
-        <input 
-          name="username" 
-          placeholder="Username" 
-          value={form.username}
+      <h2>Create Account</h2>
+      
+      <form className="auth-form" onSubmit={handleSubmit}>
+        <input
+          type="text"
+          name="username"
+          placeholder="Username"
+          value={formData.username}
           onChange={handleChange}
-          required 
+          required
         />
-        <input 
-          name="email" 
-          type="email" 
-          placeholder="Email" 
-          value={form.email}
+        
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={formData.email}
           onChange={handleChange}
-          required 
+          required
         />
-        <input 
-          name="password" 
-          type="password" 
-          placeholder="Password" 
-          value={form.password}
+        
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          value={formData.password}
           onChange={handleChange}
-          required 
+          required
         />
-        <button type="submit">Register</button>
+        
+        <input
+          type="password"
+          name="confirmPassword"
+          placeholder="Confirm Password"
+          value={formData.confirmPassword}
+          onChange={handleChange}
+          required
+        />
+        
+        {error && <p className="error-msg">{error}</p>}
+        
+        <button type="submit">
+          Register
+        </button>
       </form>
-
-      {success && <p className="success-msg">{success}</p>}
-      {error && <p className="error-msg">{error}</p>}
+      
+      <p className="auth-link">
+        Already have an account?
+        <span onClick={() => navigate("/login")}>Login</span>
+      </p>
     </div>
   );
 }
