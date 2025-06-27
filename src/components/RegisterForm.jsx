@@ -20,7 +20,7 @@ function RegisterForm({ onLogin }) {
       const res = await API.post('/register', form);
       localStorage.setItem('access_token', res.data.access_token);
       setSuccess("Registration successful!");
-      onLogin?.(); // optional callback after successful registration
+      onLogin?.();
     } catch (err) {
       console.error(err);
       setError(err.response?.data?.error || 'Registration failed');
