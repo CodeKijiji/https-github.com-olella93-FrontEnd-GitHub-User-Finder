@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const API = axios.create({
-  baseURL: 'http://127.0.0.1:5000/api', 
+  baseURL: 'https://github-com-olella93-backend-github-n1e1.onrender.com', 
 });
 
 API.interceptors.request.use(config => {
