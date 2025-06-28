@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const API = axios.create({
-  baseURL: 'https://backend-github-user-finder.onrender.com/api',
+  baseURL: 'http://127.0.0.1:5001/api',
   withCredentials: true, 
   headers: {
     'Content-Type': 'application/json',
