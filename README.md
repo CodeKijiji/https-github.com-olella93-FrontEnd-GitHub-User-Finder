@@ -117,7 +117,7 @@ npm install
 Open src/api.jsx and confirm:
 
 const API = axios.create({
-  baseURL: 'https://web-production-78183.up.railway.app//api',
+  baseURL: 'https://web-production-78183.up.railway.app/api',
   
   withCredentials: true,
   
