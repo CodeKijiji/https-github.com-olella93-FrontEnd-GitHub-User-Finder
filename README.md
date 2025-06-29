@@ -105,6 +105,7 @@ The frontend is built with **React + Vite**, designed to connect seamlessly with
 ### 1️⃣ Clone the repository
 
 git clone https://github.com/olella93/FrontEnd-GitHub-User-Finder.git
+
 cd FrontEnd-GitHub-User-Finder
 
 2️⃣ Install dependencies
@@ -112,6 +113,7 @@ cd FrontEnd-GitHub-User-Finder
 npm install
 
 3️⃣ Set API Base URL
+
 Open src/api.jsx and confirm:
 
 const API = axios.create({
@@ -130,13 +132,17 @@ npm run dev
 The app will be accessible at http://localhost:5173.
 
 🪄 Environment Variables
+
 None required for local development, but ensure:
 
 ✅ Backend CORS settings include:
+
 http://localhost:5173
+
 https://https-githubcom-olella93-frontend-github-user-f-production.up.railway.app
 
 🚀 Deployment
+
 You can deploy the frontend easily on:
 
 - Render
@@ -150,6 +156,7 @@ npm run build
 and publish the dist/ folder.
 
 🤝 Contributing
+
 This project is part of a school project and is primarily maintained by Richard Olella, Bariu Andrew and Elvis Wachira.
 
 Feel free to fork, clone, and contribute with:
