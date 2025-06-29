@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const API = axios.create({
-  baseURL: 'https://back-end-github-user-finder.onrender.com/api',
+  baseURL: 'https://web-production-78183.up.railway.app/api',
   withCredentials: true, 
   headers: {
     'Content-Type': 'application/json',
